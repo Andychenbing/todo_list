@@ -34,7 +34,7 @@ public class TaskRestController {
 
 
     @RequestMapping(value = "/task", method = RequestMethod.GET)
-    public User findByTaskName(@RequestParam(value = "id", required = true) int id) {
+    public Task findByTaskId(@RequestParam(value = "id", required = true) int id) {
         System.out.println("开始查询...");
         return taskService.findTaskById(id);
     }
