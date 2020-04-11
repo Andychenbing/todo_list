@@ -2,22 +2,22 @@ package com.todolist.todolist;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.todolist.User
+import com.todolist.Task
 
 @SpringBootTest
 class TodolistApplicationTests {
     @Autowired
-    private UserRestController UserController;
+    private TaskRestController TaskController;
 
     @Test
-    public void testAddUser() throws Exception {
-       User user = new User();
-        user.setId(1);
-        user.setContent("Restful API homework");
-        user.setCreatedTime("2019-05-15T00:00:00Z");
+    public void testAddTask() throws Exception {
+       Task task = new Task();
+        task.setId(1);
+        task.setContent("Restful API homework");
+        task.setCreatedTime("2019-05-15T00:00:00Z");
         Gson gosn = new Gson();
         RequestBuilder builder = MockMvcRequestBuilders
-                .post("/api/user")
+                .post("/api/task")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(gosn.toJson(user));
@@ -27,13 +27,13 @@ class TodolistApplicationTests {
     }
 
     @Test
-    public void testUpdateUser() throws Exception {
-        User user = new User();
-        user.setContent("Restful API homework222");
-        user.setCreatedTime("2019-08-15T00:00:00Z");
+    public void testUpdateTask() throws Exception {
+        Task task = new Task();
+        task.setContent("Restful API homework222");
+        task.setCreatedTime("2019-08-15T00:00:00Z");
         Gson gosn = new Gson();
         RequestBuilder builder = MockMvcRequestBuilders
-                .put("/api/user/1")
+                .put("/api/task/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(gosn.toJson(user));
@@ -41,9 +41,9 @@ class TodolistApplicationTests {
     }
 
     @Test
-    public void testQueryUser() throws Exception {
+    public void testQueryTask() throws Exception {
         RequestBuilder builder = MockMvcRequestBuilders
-                .get("/api/user/1")
+                .get("/api/task/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON_UTF8);
         MvcResult result = mvc.perform(builder).andReturn();
@@ -51,9 +51,9 @@ class TodolistApplicationTests {
     }
 
     @Test
-    public void testDeleteUser() throws Exception {
+    public void testDeleteTask() throws Exception {
         RequestBuilder builder = MockMvcRequestBuilders
-                .delete("/api/user/1")
+                .delete("/api/task/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON_UTF8);
         MvcResult result = mvc.perform(builder).andReturn();

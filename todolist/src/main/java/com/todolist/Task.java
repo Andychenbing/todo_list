@@ -1,6 +1,6 @@
 package com.todolist.todolist;
 
-public class User {
+public class Task {
     private int id;
 
     public String getContent() {
